@@ -1,5 +1,5 @@
 from boto3 import client
-from sagemaker.tensorflow.model import TensorFlowModel
+from sagemaker.tensorflow import TensorFlowModel
 import tarfile
 
 bucket = "lia-model"
@@ -24,5 +24,5 @@ model = TensorFlowModel(
 model.deploy(
   endpoint_name=endpoint_name,
   initial_instance_count=1,
-  instance_type="ml.t2.medium"
+  instance_type="ml.m5.large"
 )
