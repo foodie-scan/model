@@ -1,7 +1,6 @@
 from boto3 import client
 from sagemaker.tensorflow.model import TensorFlowModel
 import tarfile
-from tensorflow import __version__
 
 bucket = "lia-model"
 endpoint_name = "lia-model-endpoint"
@@ -17,7 +16,7 @@ s3.upload_file("model.tar.gz", bucket, "model.tar.gz")
 
 # Create a SageMaker Model object
 model = TensorFlowModel(
-  framework_version=__version__,
+  framework_version="2.8",
   model_data=f"s3://{bucket}/model.tar.gz",
   role=role
 )
