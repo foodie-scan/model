@@ -1,4 +1,5 @@
 from boto3 import client
+from sagemaker.serverless import ServerlessInferenceConfig
 from sagemaker.tensorflow import TensorFlowModel
 import tarfile
 
@@ -26,5 +27,5 @@ model = TensorFlowModel(
 model.deploy(
   endpoint_name=endpoint_name,
   initial_instance_count=1,
-  instance_type="ml.t2.medium"
+  serverless_inference_config=ServerlessInferenceConfig()
 )
